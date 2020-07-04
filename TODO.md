@@ -1,5 +1,5 @@
 * understand numbers - arabic
-    * (TODO) instruct ("means")
+    * (WIP) instruct ("means")
     * (TODO) query valid data ("how much is")
     * (TODO) error on invalid query
 * understand units
