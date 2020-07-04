@@ -20,5 +20,13 @@ public class WordsTest {
 
 	assertThat(words.compute("glob", "glob"), is(11));
     }
+    
+    @Test
+    public void different() throws Exception {
+	Words words = new Words().meaning("glob", "1").meaning("prok", "5");
+
+	assertThat(words.compute("glob", "prok"), is(15));
+	assertThat(words.compute("prok", "glob"), is(51));
+    }
 
 }
