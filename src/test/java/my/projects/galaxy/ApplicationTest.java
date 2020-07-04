@@ -2,7 +2,6 @@ package my.projects.galaxy;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
-import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
