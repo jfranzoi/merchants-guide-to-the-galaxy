@@ -1,7 +1,8 @@
 package my.projects.galaxy;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Application {
 
@@ -22,21 +23,20 @@ public class Application {
   }
 
   private void process(String line, Result result) {
-
-    Matcher means = Pattern.compile("(?<word>\\w+) means (?<symbol>\\w+)").matcher(line);
-    Matcher howMuch = Pattern.compile("how much is (?<words>.+) \\?").matcher(line);
-
-    if (means.find()) {
-      translations.meaning(means.group("word"), means.group("symbol"));
-    } else if (howMuch.find()) {
-      result.add(String.format(
-        "%s is %s",
-        howMuch.group("words"),
-        translations.compute(howMuch.group("words").split(" "))
-      ));
-    } else {
-      result.add("I have no idea what you are talking about");
+    for (Rule rule : rules(result)) {
+      Matcher matcher = rule.pattern().matcher(line);
+      if (matcher.find()) {
+        rule.process(matcher);
+        return;
+      }
     }
+  }
+
+  private List<Rule> rules(Result result) {
+    return Arrays.asList(
+        new MeaningRule(translations),
+        new HowMuchRule(translations, result),
+        new FallbackRule(result));
   }
 
 }
