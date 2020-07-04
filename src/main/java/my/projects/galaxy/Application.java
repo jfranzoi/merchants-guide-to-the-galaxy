@@ -1,5 +1,8 @@
 package my.projects.galaxy;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Application {
 
   private Translations translations;
@@ -19,14 +22,18 @@ public class Application {
   }
 
   private void process(String line, Result result) {
-    if (line.contains(" means ")) {
-      String word = line.split(" means ")[0];
-      String symbol = line.split(" means ")[1];
-      translations.meaning(word, symbol);
-    } else if (line.contains("how much is ")) {
-      String text = line.split("how much is ")[1].replace(" ?", "");
-      Long value = translations.compute(text.split(" "));
-      result.add(String.format("%s is %s", text, value));
+
+    Matcher means = Pattern.compile("(?<word>\\w+) means (?<symbol>\\w+)").matcher(line);
+    Matcher howMuch = Pattern.compile("how much is (?<words>.+) \\?").matcher(line);
+
+    if (means.find()) {
+      translations.meaning(means.group("word"), means.group("symbol"));
+    } else if (howMuch.find()) {
+      result.add(String.format(
+        "%s is %s",
+        howMuch.group("words"),
+        translations.compute(howMuch.group("words").split(" "))
+      ));
     } else {
       result.add("I have no idea what you are talking about");
     }
