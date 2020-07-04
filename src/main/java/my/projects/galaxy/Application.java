@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 public class Application {
 
   private Translations translations;
+  private Prices prices;
 
   public Application() {
     this(new ArabicTranslations());
@@ -14,6 +15,7 @@ public class Application {
 
   public Application(Translations translations) {
     this.translations = translations;
+    this.prices = new Prices(translations);
   }
 
   public void process(Content content, Result result) {
@@ -35,7 +37,9 @@ public class Application {
   private List<Rule> rules(Result result) {
     return Arrays.asList(
         new MeaningRule(translations),
-        new HowMuchRule(translations, result),
+        new UnitsOfRule(prices),
+        new HowMuchIsRule(translations, result),
+        new HowManyCreditsIsRule(prices, result),
         new FallbackRule(result));
   }
 

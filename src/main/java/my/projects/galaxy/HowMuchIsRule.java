@@ -3,14 +3,14 @@ package my.projects.galaxy;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class HowMuchRule implements Rule {
+public class HowMuchIsRule implements Rule {
 
   private static final Pattern PATTERN = Pattern.compile("how much is (?<words>.+) \\?");
 
   private Translations translations;
   private Result result;
 
-  public HowMuchRule(Translations translations, Result result) {
+  public HowMuchIsRule(Translations translations, Result result) {
     this.translations = translations;
     this.result = result;
   }

@@ -36,6 +36,18 @@ public class ApplicationTest {
   }
 
   @Test
+  public void understandsUnits() throws Exception {
+    content
+        .append("glob means 1")
+        .append("glob units of Silver are worth 10 Credits")
+        .append("how many Credits is glob glob Silver ?");
+
+    new Application(new ArabicTranslations()).process(content, result);
+
+    assertThat(result.output(), contains("glob glob Silver is 110 Credits"));
+  }
+
+  @Test
   public void invalidQueries() throws Exception {
     content.append("how much wood could a woodchuck chuck if a woodchuck could chuck wood ?");
 
