@@ -2,6 +2,7 @@ package my.projects.galaxy;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,6 +33,15 @@ public class ApplicationTest {
     new Application(new ArabicTranslations()).process(content, result);
 
     assertThat(result.output(), contains("pish tegj glob glob is 15011"));
+  }
+
+  @Test
+  public void invalidQueries() throws Exception {
+    content.append("how much wood could a woodchuck chuck if a woodchuck could chuck wood ?");
+
+    new Application(new ArabicTranslations()).process(content, result);
+
+    assertThat(result.output(), contains("I have no idea what you are talking about"));
   }
 
 }

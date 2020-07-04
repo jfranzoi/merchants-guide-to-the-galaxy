@@ -27,6 +27,8 @@ public class Application {
       String text = line.split("how much is ")[1].replace(" ?", "");
       Long value = translations.compute(text.split(" "));
       result.add(String.format("%s is %s", text, value));
+    } else {
+      result.add("I have no idea what you are talking about");
     }
   }
 

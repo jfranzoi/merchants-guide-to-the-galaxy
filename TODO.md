@@ -1,7 +1,7 @@
 * understand numbers - arabic
-    * (WIP) instruct ("means")
-    * (TODO) query valid data ("how much is")
-    * (TODO) error on invalid query
+    * (DONE) instruct ("means")
+    * (DONE) query valid data ("how much is")
+    * (DONE) error on invalid query
 * understand units
     * (TODO) instruct ("units of .. are worth")
     * (TODO) query valid data ("how many Credits is")
