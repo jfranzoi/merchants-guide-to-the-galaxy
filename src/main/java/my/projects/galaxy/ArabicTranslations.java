@@ -9,8 +9,8 @@ public class ArabicTranslations implements Translations {
   private final Map<String, String> symbolsByWord = new HashMap<String, String>();
 
   @Override
-  public Translations meaning(String word, String value) {
-    symbolsByWord.put(word, value);
+  public Translations meaning(String word, String symbol) {
+    symbolsByWord.put(word, symbol);
     return this;
   }
 
