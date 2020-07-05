@@ -4,9 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import my.projects.galaxy.Action;
+import my.projects.galaxy.Translations;
 import my.projects.galaxy.Prices;
 import my.projects.galaxy.Result;
-import my.projects.galaxy.Translations;
 
 public class HowManyCreditsGoodsQuery implements Action {
 

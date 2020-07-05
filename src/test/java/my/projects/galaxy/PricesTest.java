@@ -12,7 +12,7 @@ public class PricesTest {
 
   @Before
   public void setUp() {
-    translations = new ArabicTranslations();
+    translations = new Translations();
     translations.meaning("one", "1");
   }
 
