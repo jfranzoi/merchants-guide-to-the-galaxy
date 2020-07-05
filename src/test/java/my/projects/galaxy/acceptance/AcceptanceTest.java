@@ -1,4 +1,4 @@
-package my.projects.galaxy;
+package my.projects.galaxy.acceptance;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
@@ -10,6 +10,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
+import my.projects.galaxy.Application;
 import my.projects.galaxy.dummies.FileFixture;
 import my.projects.galaxy.dummies.InMemoryResult;
 import my.projects.galaxy.io.FileContent;

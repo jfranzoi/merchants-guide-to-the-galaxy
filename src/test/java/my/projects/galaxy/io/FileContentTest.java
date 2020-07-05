@@ -1,4 +1,4 @@
-package my.projects.galaxy;
+package my.projects.galaxy.io;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
