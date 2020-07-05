@@ -1,35 +1,37 @@
 package my.projects.galaxy;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Translations {
 
-  private final Map<String, String> symbolsByWord = new HashMap<String, String>();
+  private Map<String, String> symbolsByWord = new HashMap<String, String>();
+  private Numerals numerals;
+
+  public Translations(Numerals numerals) {
+    this.numerals = numerals;
+  }
 
   public Translations meaning(String word, String symbol) {
     symbolsByWord.put(word, symbol);
     return this;
   }
 
-  public Long compute(String... words) {
-    return toNumber(asDigits(words));
+  public Long translate(String... words) {
+    return numerals.compute(toSymbols(words));
   }
 
-  private String asDigits(String... words) {
+  private List<String> toSymbols(String... words) {
     return Stream.of(words)
-        .map(x -> symbolFor(x))
-        .collect(Collectors.joining());
+        .map(x -> toSymbol(x))
+        .collect(Collectors.toList());
   }
 
-  private String symbolFor(String word) {
+  private String toSymbol(String word) {
     return symbolsByWord.get(word);
-  }
-
-  private Long toNumber(String symbol) {
-    return Long.valueOf(symbol);
   }
 
 }

@@ -9,27 +9,27 @@ public class TranslationsTest {
 
   @Test
   public void single() {
-    Translations translations = new Translations().meaning("one", "1");
+    Translations translations = new Translations(new ArabicNumerals()).meaning("one", "1");
 
-    assertThat(translations.compute("one"), is(1L));
+    assertThat(translations.translate("one"), is(1L));
   }
 
   @Test
   public void repeated() throws Exception {
-    Translations translations = new Translations().meaning("one", "1");
+    Translations translations = new Translations(new ArabicNumerals()).meaning("one", "1");
 
-    assertThat(translations.compute("one", "one"), is(11L));
+    assertThat(translations.translate("one", "one"), is(11L));
   }
 
   @Test
   public void different() throws Exception {
-    Translations translations = new Translations()
+    Translations translations = new Translations(new ArabicNumerals())
         .meaning("one", "1")
         .meaning("five", "5")
         .meaning("ten", "10");
 
-    assertThat(translations.compute("one", "five"), is(15L));
-    assertThat(translations.compute("five", "ten"), is(510L));
+    assertThat(translations.translate("one", "five"), is(15L));
+    assertThat(translations.translate("five", "ten"), is(510L));
   }
 
 }

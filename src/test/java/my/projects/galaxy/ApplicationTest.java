@@ -29,7 +29,7 @@ public class ApplicationTest {
         .append("fifty means 50")
         .append("how much is ten fifty one one ?");
 
-    new Application(new Translations()).process(content, result);
+    application().process(content, result);
 
     assertThat(result.output(), contains("ten fifty one one is 105011"));
   }
@@ -41,7 +41,7 @@ public class ApplicationTest {
         .append("one units of Silver are worth 10 Credits")
         .append("how many Credits is one one Silver ?");
 
-    new Application(new Translations()).process(content, result);
+    application().process(content, result);
 
     assertThat(result.output(), contains("one one Silver is 110 Credits"));
   }
@@ -50,9 +50,13 @@ public class ApplicationTest {
   public void invalidQueries() throws Exception {
     content.append("how much wood could a woodchuck chuck if a woodchuck could chuck wood ?");
 
-    new Application(new Translations()).process(content, result);
+    application().process(content, result);
 
     assertThat(result.output(), contains("I have no idea what you are talking about"));
+  }
+
+  private Application application() {
+    return new Application(new Translations(new ArabicNumerals()), new Prices());
   }
 
 }

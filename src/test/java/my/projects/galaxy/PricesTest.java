@@ -3,18 +3,9 @@ package my.projects.galaxy;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-import org.junit.Before;
 import org.junit.Test;
 
 public class PricesTest {
-
-  private Translations translations;
-
-  @Before
-  public void setUp() {
-    translations = new Translations();
-    translations.meaning("one", "1");
-  }
 
   @Test
   public void exact() {

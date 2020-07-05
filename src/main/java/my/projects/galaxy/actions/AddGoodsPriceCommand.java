@@ -28,7 +28,7 @@ public class AddGoodsPriceCommand implements Action {
   }
 
   private Long translate(String words) {
-    return translations.compute(words.split(" "));
+    return translations.translate(words.split(" "));
   }
 
   private Long asNumber(String text) {

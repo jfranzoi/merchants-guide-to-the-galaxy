@@ -16,12 +16,12 @@ public class Application {
   private Prices prices;
 
   public Application() {
-    this(new Translations());
+    this(new Translations(new ArabicNumerals()), new Prices());
   }
 
-  public Application(Translations translations) {
+  public Application(Translations translations, Prices prices) {
     this.translations = translations;
-    this.prices = new Prices();
+    this.prices = prices;
   }
 
   public void process(Content content, Result result) {
