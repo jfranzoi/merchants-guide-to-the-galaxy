@@ -27,7 +27,11 @@ public class HowMuchWordsQuery implements Action {
     result.add(String.format(
         "%s is %s",
         matcher.group("words"),
-        translations.translate(matcher.group("words"))));
+        translate(matcher.group("words"))));
+  }
+
+  private Long translate(String words) {
+    return translations.translate(words);
   }
 
 }

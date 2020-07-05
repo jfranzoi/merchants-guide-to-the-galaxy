@@ -8,7 +8,7 @@ public class Prices {
 
   private Map<String, BigDecimal> pricesByGood = new HashMap<>();
 
-  public Prices add(Long credits, String good, Long units) {
+  public Prices add(BigDecimal credits, String good, Long units) {
     pricesByGood.put(good, unitaryPrice(credits, units));
     return this;
   }
@@ -17,8 +17,8 @@ public class Prices {
     return pricesByGood.get(good).multiply(new BigDecimal(price));
   }
 
-  private BigDecimal unitaryPrice(Long credits, Long units) {
-    return new BigDecimal(credits).divide(new BigDecimal(units));
+  private BigDecimal unitaryPrice(BigDecimal credits, Long units) {
+    return credits.divide(new BigDecimal(units));
   }
 
 }

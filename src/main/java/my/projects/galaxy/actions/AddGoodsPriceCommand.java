@@ -1,5 +1,6 @@
 package my.projects.galaxy.actions;
 
+import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,15 +25,18 @@ public class AddGoodsPriceCommand implements Action {
 
   @Override
   public void process(Matcher matcher) {
-    prices.add(asNumber(matcher.group("credits")), matcher.group("good"), translate(matcher.group("units")));
+    prices.add(
+        toPrice(matcher.group("credits")),
+        matcher.group("good"),
+        translate(matcher.group("units")));
   }
 
   private Long translate(String words) {
     return translations.translate(words);
   }
 
-  private Long asNumber(String text) {
-    return Long.valueOf(text);
+  private BigDecimal toPrice(String text) {
+    return new BigDecimal(text);
   }
 
 }
