@@ -16,7 +16,7 @@ public class Application {
   private Prices prices;
 
   public Application() {
-    this(new Translations(new ArabicNumerals()), new Prices());
+    this(new Translations(new RomanNumerals()), new Prices());
   }
 
   public Application(Translations translations, Prices prices) {

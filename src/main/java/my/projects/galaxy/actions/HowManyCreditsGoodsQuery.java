@@ -22,16 +22,16 @@ public class HowManyCreditsGoodsQuery implements Action {
 
   @Override
   public Pattern pattern() {
-    return Pattern.compile("how many Credits is (?<words>.+) (?<good>\\w+) ?");
+    return Pattern.compile("how many Credits is (?<credits>.+) (?<good>\\w+) ?");
   }
 
   @Override
   public void process(Matcher matcher) {
     result.add(String.format(
         "%s %s is %s Credits",
-        matcher.group("words"),
+        matcher.group("credits"),
         matcher.group("good"),
-        priceFor(matcher.group("good"), translate(matcher.group("words")))));
+        priceFor(matcher.group("good"), translate(matcher.group("credits")))));
   }
 
   private Long translate(String words) {

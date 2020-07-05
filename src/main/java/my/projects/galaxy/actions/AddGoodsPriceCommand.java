@@ -19,12 +19,12 @@ public class AddGoodsPriceCommand implements Action {
 
   @Override
   public Pattern pattern() {
-    return Pattern.compile("(?<words>.+) units of (?<good>\\w+) are worth (?<credits>\\d+) Credits");
+    return Pattern.compile("(?<units>.+) units of (?<good>\\w+) are worth (?<credits>\\d+) Credits");
   }
 
   @Override
   public void process(Matcher matcher) {
-    prices.add(asNumber(matcher.group("credits")), matcher.group("good"), translate(matcher.group("words")));
+    prices.add(asNumber(matcher.group("credits")), matcher.group("good"), translate(matcher.group("units")));
   }
 
   private Long translate(String words) {
