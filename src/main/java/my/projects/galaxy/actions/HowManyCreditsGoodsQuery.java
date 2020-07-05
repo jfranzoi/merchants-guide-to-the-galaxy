@@ -35,7 +35,7 @@ public class HowManyCreditsGoodsQuery implements Action {
   }
 
   private Long translate(String words) {
-    return translations.translate(words.split(" "));
+    return translations.translate(words);
   }
 
   private Long priceFor(String good, Long words) {

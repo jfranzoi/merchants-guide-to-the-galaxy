@@ -20,8 +20,8 @@ public class Translations {
     return this;
   }
 
-  public Long translate(String... words) {
-    return numerals.compute(toSymbols(words));
+  public Long translate(String words) {
+    return numerals.compute(toSymbols(words.split(" ")));
   }
 
   private List<String> toSymbols(String... words) {

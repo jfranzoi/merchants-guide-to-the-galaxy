@@ -20,7 +20,7 @@ public class TranslationsTest {
   public void repeated() throws Exception {
     Translations translations = new Translations(new ArabicNumerals()).meaning("one", "1");
 
-    assertThat(translations.translate("one", "one"), is(11L));
+    assertThat(translations.translate("one one"), is(11L));
   }
 
   @Test
@@ -30,8 +30,8 @@ public class TranslationsTest {
         .meaning("five", "5")
         .meaning("ten", "10");
 
-    assertThat(translations.translate("one", "five"), is(15L));
-    assertThat(translations.translate("five", "ten"), is(510L));
+    assertThat(translations.translate("one five"), is(15L));
+    assertThat(translations.translate("five ten"), is(510L));
   }
 
 }
