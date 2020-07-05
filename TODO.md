@@ -1,3 +1,5 @@
+TODO list
+
 * understand numbers - arabic
     * (DONE) instruct ("means")
     * (DONE) query valid data ("how much is")

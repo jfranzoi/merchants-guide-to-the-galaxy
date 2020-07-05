@@ -23,4 +23,11 @@ I tried to split the problem in two iterations:
 
 In `dummies` **test** package you can find such simpler implementation of application roles (as for **Arabic** numerals, and **in-memory** I/O).
 
-*Resulting* design is composed of a main application object, delegating each `content` line processing to matching `actions`. Each action can then prepare shared state (being `commands`) or add info to `result` (being `queries`).
+*Resulting* design is composed of a main `application` object, delegating each `content` line processing to matching `actions`. Each action can then prepare shared state (being `commands`) or add info to `result` (being `queries`). Matching action is detected applying a regexp `pattern` on line content. A `fallback` action is provided, to handle unrecognized line content.
+
+Final notes, given examples to support were very simple:
+
+* prices are represented by big decimals, but no particular rounding was required
+* **Roman** `numerals` implementation is very basic, no special rules on symbols subtraction
+
+Feel free to provide any feedback!
