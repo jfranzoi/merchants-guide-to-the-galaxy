@@ -27,7 +27,7 @@ In `dummies` **test** package you can find such simpler implementation of applic
 
 Final notes, given examples to support were very simple:
 
-* prices are represented by big decimals, but no particular rounding was required
+* prices are represented by `big decimals`, but no particular rounding was required
 * **Roman** `numerals` implementation is very basic, no special rules on symbols subtraction
 
 Feel free to provide any feedback!

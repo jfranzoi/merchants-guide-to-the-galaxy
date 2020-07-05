@@ -3,8 +3,8 @@ package my.projects.galaxy.io;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 public class FileContent implements Content {
 
@@ -16,15 +16,10 @@ public class FileContent implements Content {
 
   @Override
   public void onEachLine(Consumer<String> action) {
-    linesAt(source).forEach(action);
-  }
-
-  private List<String> linesAt(File file) {
-    try {
-      return Files.readAllLines(Paths.get(file.getAbsolutePath()));
+    try (Stream<String> lines = Files.lines(Paths.get(source.getAbsolutePath()))) {
+      lines.forEach(action);
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
   }
-
 }
