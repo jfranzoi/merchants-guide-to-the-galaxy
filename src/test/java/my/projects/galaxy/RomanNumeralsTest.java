@@ -5,7 +5,6 @@ import static org.hamcrest.Matchers.is;
 
 import java.util.Arrays;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class RomanNumeralsTest {
@@ -30,8 +29,9 @@ public class RomanNumeralsTest {
   }
 
   @Test
-  @Ignore("WIP")
   public void multipleSymbolsSubtracted() throws Exception {
+    assertThat(numerals.compute(Arrays.asList("I", "I")), is(2L));
+    assertThat(numerals.compute(Arrays.asList("I", "V")), is(4L));
     assertThat(numerals.compute(Arrays.asList("X", "L", "I", "I")), is(42L));
     assertThat(numerals.compute(Arrays.asList("M", "C", "M", "X", "L", "I", "V")), is(1944L));
   }
