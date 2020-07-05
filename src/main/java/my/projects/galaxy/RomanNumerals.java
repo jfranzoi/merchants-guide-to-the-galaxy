@@ -16,13 +16,17 @@ public class RomanNumerals implements Numerals {
 
   @Override
   public Long compute(List<String> symbols) {
-    return symbols.stream().findFirst()
+    return symbols.stream()
         .map(x -> compute(x))
-        .orElse(0L);
+        .reduce(0L, (x, y) -> add(x, y));
   }
 
   private Long compute(String symbol) {
     return DEFAULTS.get(symbol);
+  }
+
+  private Long add(Long one, Long another) {
+    return one + another;
   }
 
 }

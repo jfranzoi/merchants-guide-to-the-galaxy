@@ -13,7 +13,7 @@ public class RomanNumeralsTest {
   public void defaultSymbols_I() {
     assertThat(new RomanNumerals().compute(Arrays.asList("I")), is(1L));
   }
-  
+
   @Test
   public void defaultSymbols_V() {
     assertThat(new RomanNumerals().compute(Arrays.asList("V")), is(5L));
@@ -23,11 +23,16 @@ public class RomanNumeralsTest {
   public void defaultSymbols_X() {
     assertThat(new RomanNumerals().compute(Arrays.asList("X")), is(10L));
   }
-  
+
   @Test
   public void defaultSymbols_L() {
     assertThat(new RomanNumerals().compute(Arrays.asList("L")), is(50L));
   }
-  
-  
+
+  @Test
+  public void combineSimple() throws Exception {
+    assertThat(new RomanNumerals().compute(Arrays.asList("V", "I")), is(6L));
+    assertThat(new RomanNumerals().compute(Arrays.asList("X", "V", "I")), is(16L));
+  }
+
 }
