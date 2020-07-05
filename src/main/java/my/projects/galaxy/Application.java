@@ -4,6 +4,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 
+import my.projects.galaxy.actions.AddGoodsPriceCommand;
+import my.projects.galaxy.actions.AddWordsMeaningCommand;
+import my.projects.galaxy.actions.FallbackAction;
+import my.projects.galaxy.actions.HowManyCreditsGoodsQuery;
+import my.projects.galaxy.actions.HowMuchWordsQuery;
+
 public class Application {
 
   private Translations translations;
@@ -25,22 +31,26 @@ public class Application {
   }
 
   private void process(String line, Result result) {
-    for (Rule rule : rules(result)) {
-      Matcher matcher = rule.pattern().matcher(line);
+    for (Action action : actionsOn(result)) {
+      Matcher matcher = matcherOn(action, line);
       if (matcher.find()) {
-        rule.process(matcher);
+        action.process(matcher);
         return;
       }
     }
   }
 
-  private List<Rule> rules(Result result) {
+  private Matcher matcherOn(Action action, String line) {
+    return action.pattern().matcher(line);
+  }
+
+  private List<Action> actionsOn(Result result) {
     return Arrays.asList(
-        new MeaningRule(translations),
-        new UnitsOfRule(prices),
-        new HowMuchIsRule(translations, result),
-        new HowManyCreditsIsRule(prices, result),
-        new FallbackRule(result));
+        new AddWordsMeaningCommand(translations),
+        new AddGoodsPriceCommand(prices),
+        new HowMuchWordsQuery(translations, result),
+        new HowManyCreditsGoodsQuery(prices, result),
+        new FallbackAction(result));
   }
 
 }

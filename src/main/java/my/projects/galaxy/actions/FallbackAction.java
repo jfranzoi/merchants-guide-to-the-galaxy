@@ -1,13 +1,16 @@
-package my.projects.galaxy;
+package my.projects.galaxy.actions;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FallbackRule implements Rule {
+import my.projects.galaxy.Action;
+import my.projects.galaxy.Result;
+
+public class FallbackAction implements Action {
 
   private Result result;
 
-  public FallbackRule(Result result) {
+  public FallbackAction(Result result) {
     this.result = result;
   }
 

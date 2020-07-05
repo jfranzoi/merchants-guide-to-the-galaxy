@@ -1,23 +1,25 @@
-package my.projects.galaxy;
+package my.projects.galaxy.actions;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class HowManyCreditsIsRule implements Rule {
+import my.projects.galaxy.Action;
+import my.projects.galaxy.Prices;
+import my.projects.galaxy.Result;
 
-  private static final Pattern PATTERN = Pattern.compile("how many Credits is (?<words>.+) (?<good>\\w+) ?");
+public class HowManyCreditsGoodsQuery implements Action {
 
   private Result result;
   private Prices prices;
 
-  public HowManyCreditsIsRule(Prices prices, Result result) {
+  public HowManyCreditsGoodsQuery(Prices prices, Result result) {
     this.prices = prices;
     this.result = result;
   }
 
   @Override
   public Pattern pattern() {
-    return PATTERN;
+    return Pattern.compile("how many Credits is (?<words>.+) (?<good>\\w+) ?");
   }
 
   @Override

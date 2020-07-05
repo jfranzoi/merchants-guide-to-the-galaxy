@@ -1,13 +1,16 @@
-package my.projects.galaxy;
+package my.projects.galaxy.actions;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MeaningRule implements Rule {
+import my.projects.galaxy.Action;
+import my.projects.galaxy.Translations;
+
+public class AddWordsMeaningCommand implements Action {
 
   private Translations translations;
 
-  public MeaningRule(Translations translations) {
+  public AddWordsMeaningCommand(Translations translations) {
     this.translations = translations;
   }
 

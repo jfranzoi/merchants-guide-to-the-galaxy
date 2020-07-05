@@ -1,23 +1,25 @@
-package my.projects.galaxy;
+package my.projects.galaxy.actions;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class HowMuchIsRule implements Rule {
+import my.projects.galaxy.Action;
+import my.projects.galaxy.Result;
+import my.projects.galaxy.Translations;
 
-  private static final Pattern PATTERN = Pattern.compile("how much is (?<words>.+) \\?");
+public class HowMuchWordsQuery implements Action {
 
   private Translations translations;
   private Result result;
 
-  public HowMuchIsRule(Translations translations, Result result) {
+  public HowMuchWordsQuery(Translations translations, Result result) {
     this.translations = translations;
     this.result = result;
   }
 
   @Override
   public Pattern pattern() {
-    return PATTERN;
+    return Pattern.compile("how much is (?<words>.+) \\?");
   }
 
   @Override

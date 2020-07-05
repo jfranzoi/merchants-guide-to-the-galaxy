@@ -1,20 +1,22 @@
-package my.projects.galaxy;
+package my.projects.galaxy.actions;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UnitsOfRule implements Rule {
+import my.projects.galaxy.Action;
+import my.projects.galaxy.Prices;
 
-  private static final Pattern PATTERN = Pattern.compile("(?<words>.+) units of (?<good>\\w+) are worth (?<credits>\\d+) Credits");
+public class AddGoodsPriceCommand implements Action {
+
   private Prices prices;
 
-  public UnitsOfRule(Prices prices) {
+  public AddGoodsPriceCommand(Prices prices) {
     this.prices = prices;
   }
 
   @Override
   public Pattern pattern() {
-    return PATTERN;
+    return Pattern.compile("(?<words>.+) units of (?<good>\\w+) are worth (?<credits>\\d+) Credits");
   }
 
   @Override
