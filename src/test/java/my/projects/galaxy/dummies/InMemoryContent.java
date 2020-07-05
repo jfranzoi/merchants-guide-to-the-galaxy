@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import my.projects.galaxy.Content;
+import my.projects.galaxy.io.Content;
 
 public class InMemoryContent implements Content {
 

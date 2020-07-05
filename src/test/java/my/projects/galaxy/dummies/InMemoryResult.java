@@ -3,7 +3,7 @@ package my.projects.galaxy.dummies;
 import java.util.ArrayList;
 import java.util.List;
 
-import my.projects.galaxy.Result;
+import my.projects.galaxy.io.Result;
 
 public class InMemoryResult implements Result {
 

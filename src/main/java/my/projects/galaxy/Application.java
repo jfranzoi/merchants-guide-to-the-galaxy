@@ -5,18 +5,23 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 
+import my.projects.galaxy.actions.Action;
 import my.projects.galaxy.actions.AddGoodsPriceCommand;
 import my.projects.galaxy.actions.AddWordsMeaningCommand;
-import my.projects.galaxy.actions.FallbackAction;
+import my.projects.galaxy.actions.FallbackCommand;
 import my.projects.galaxy.actions.HowManyCreditsGoodsQuery;
 import my.projects.galaxy.actions.HowMuchWordsQuery;
+import my.projects.galaxy.io.ConsoleResult;
+import my.projects.galaxy.io.Content;
+import my.projects.galaxy.io.FileContent;
+import my.projects.galaxy.io.Result;
 
 public class Application {
 
   public static void main(String[] args) {
     new Application().process(
         new FileContent(new File(args[0])),
-        (x) -> System.out.println(x));
+        new ConsoleResult());
   }
 
   private Translations translations;
@@ -57,7 +62,7 @@ public class Application {
         new AddGoodsPriceCommand(translations, prices),
         new HowMuchWordsQuery(translations, result),
         new HowManyCreditsGoodsQuery(translations, prices, result),
-        new FallbackAction(result));
+        new FallbackCommand(result));
   }
 
 }

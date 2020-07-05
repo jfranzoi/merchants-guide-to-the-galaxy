@@ -1,4 +1,4 @@
-package my.projects.galaxy;
+package my.projects.galaxy.io;
 
 import java.io.File;
 import java.nio.file.Files;

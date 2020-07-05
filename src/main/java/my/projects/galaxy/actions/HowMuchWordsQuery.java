@@ -3,9 +3,8 @@ package my.projects.galaxy.actions;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import my.projects.galaxy.Action;
-import my.projects.galaxy.Result;
 import my.projects.galaxy.Translations;
+import my.projects.galaxy.io.Result;
 
 public class HowMuchWordsQuery implements Action {
 

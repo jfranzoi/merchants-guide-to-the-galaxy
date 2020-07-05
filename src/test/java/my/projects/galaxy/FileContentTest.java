@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import my.projects.galaxy.dummies.FileFixture;
+import my.projects.galaxy.io.FileContent;
 
 public class FileContentTest {
 

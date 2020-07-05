@@ -3,14 +3,13 @@ package my.projects.galaxy.actions;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import my.projects.galaxy.Action;
-import my.projects.galaxy.Result;
+import my.projects.galaxy.io.Result;
 
-public class FallbackAction implements Action {
+public class FallbackCommand implements Action {
 
   private Result result;
 
-  public FallbackAction(Result result) {
+  public FallbackCommand(Result result) {
     this.result = result;
   }
 

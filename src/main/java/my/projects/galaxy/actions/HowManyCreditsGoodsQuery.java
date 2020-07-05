@@ -3,10 +3,9 @@ package my.projects.galaxy.actions;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import my.projects.galaxy.Action;
 import my.projects.galaxy.Prices;
-import my.projects.galaxy.Result;
 import my.projects.galaxy.Translations;
+import my.projects.galaxy.io.Result;
 
 public class HowManyCreditsGoodsQuery implements Action {
 
@@ -31,15 +30,15 @@ public class HowManyCreditsGoodsQuery implements Action {
         "%s %s is %s Credits",
         matcher.group("units"),
         matcher.group("good"),
-        priceFor(matcher.group("good"), translate(matcher.group("units")))));
+        totalFor(matcher.group("good"), translate(matcher.group("units")))));
   }
 
   private Long translate(String words) {
     return translations.translate(words);
   }
 
-  private Long priceFor(String good, Long words) {
-    return prices.compute(good, words).longValue();
+  private Long totalFor(String good, Long words) {
+    return prices.totalFor(good, words).longValue();
   }
 
 }

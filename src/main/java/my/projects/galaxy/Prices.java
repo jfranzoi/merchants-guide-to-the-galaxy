@@ -13,8 +13,8 @@ public class Prices {
     return this;
   }
 
-  public BigDecimal compute(String good, Long price) {
-    return pricesByGood.get(good).multiply(new BigDecimal(price));
+  public BigDecimal totalFor(String good, Long units) {
+    return pricesByGood.get(good).multiply(new BigDecimal(units));
   }
 
   private BigDecimal unitaryPrice(BigDecimal credits, Long units) {

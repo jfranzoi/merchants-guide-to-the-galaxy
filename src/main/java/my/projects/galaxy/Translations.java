@@ -21,11 +21,11 @@ public class Translations {
   }
 
   public Long translate(String words) {
-    return numerals.compute(toSymbols(words.split(" ")));
+    return numerals.compute(toSymbols(words));
   }
 
-  private List<String> toSymbols(String... words) {
-    return Stream.of(words)
+  private List<String> toSymbols(String words) {
+    return Stream.of(words.split(" "))
         .map(x -> toSymbol(x))
         .collect(Collectors.toList());
   }

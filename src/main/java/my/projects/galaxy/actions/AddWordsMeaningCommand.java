@@ -3,7 +3,6 @@ package my.projects.galaxy.actions;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import my.projects.galaxy.Action;
 import my.projects.galaxy.Translations;
 
 public class AddWordsMeaningCommand implements Action {
