@@ -5,6 +5,8 @@ import static org.hamcrest.Matchers.is;
 
 import org.junit.Test;
 
+import my.projects.galaxy.dummies.ArabicNumerals;
+
 public class TranslationsTest {
 
   @Test

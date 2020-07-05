@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.contains;
 import org.junit.Before;
 import org.junit.Test;
 
+import my.projects.galaxy.dummies.ArabicNumerals;
 import my.projects.galaxy.dummies.InMemoryContent;
 import my.projects.galaxy.dummies.InMemoryResult;
 

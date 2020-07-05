@@ -1,7 +1,9 @@
-package my.projects.galaxy;
+package my.projects.galaxy.dummies;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import my.projects.galaxy.Numerals;
 
 public class ArabicNumerals implements Numerals {
 

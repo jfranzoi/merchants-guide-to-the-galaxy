@@ -3,22 +3,31 @@ package my.projects.galaxy;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+import java.math.BigDecimal;
+
 import org.junit.Test;
 
 public class PricesTest {
 
   @Test
   public void exact() {
-    Prices prices = new Prices().add(10L, "Silver", 1L);
+    Prices prices = new Prices().add(57800L, "Gold", 4L);
 
-    assertThat(prices.compute("Silver", 1L), is(10L));
+    assertThat(prices.compute("Gold", 4L), is(new BigDecimal("57800")));
   }
 
   @Test
   public void multiple() throws Exception {
-    Prices prices = new Prices().add(10L, "Silver", 1L);
+    Prices prices = new Prices().add(34L, "Silver", 2L);
 
-    assertThat(prices.compute("Silver", 11L), is(110L));
+    assertThat(prices.compute("Silver", 4L), is(new BigDecimal("68")));
+  }
+
+  @Test
+  public void decimals() throws Exception {
+    Prices prices = new Prices().add(3910L, "Iron", 20L);
+
+    assertThat(prices.compute("Iron", 4L), is(new BigDecimal("782.0")));
   }
 
 }
