@@ -21,7 +21,7 @@ public class Application {
 
   public Application(Translations translations) {
     this.translations = translations;
-    this.prices = new Prices(translations);
+    this.prices = new Prices();
   }
 
   public void process(Content content, Result result) {
@@ -47,9 +47,9 @@ public class Application {
   private List<Action> actionsOn(Result result) {
     return Arrays.asList(
         new AddWordsMeaningCommand(translations),
-        new AddGoodsPriceCommand(prices),
+        new AddGoodsPriceCommand(translations, prices),
         new HowMuchWordsQuery(translations, result),
-        new HowManyCreditsGoodsQuery(prices, result),
+        new HowManyCreditsGoodsQuery(translations, prices, result),
         new FallbackAction(result));
   }
 

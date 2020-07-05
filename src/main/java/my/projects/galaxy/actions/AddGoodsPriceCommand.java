@@ -5,12 +5,15 @@ import java.util.regex.Pattern;
 
 import my.projects.galaxy.Action;
 import my.projects.galaxy.Prices;
+import my.projects.galaxy.Translations;
 
 public class AddGoodsPriceCommand implements Action {
 
+  private Translations translations;
   private Prices prices;
 
-  public AddGoodsPriceCommand(Prices prices) {
+  public AddGoodsPriceCommand(Translations translations, Prices prices) {
+    this.translations = translations;
     this.prices = prices;
   }
 
@@ -21,7 +24,11 @@ public class AddGoodsPriceCommand implements Action {
 
   @Override
   public void process(Matcher matcher) {
-    prices.add(asNumber(matcher.group("credits")), matcher.group("good"), matcher.group("words").split(" "));
+    prices.add(asNumber(matcher.group("credits")), matcher.group("good"), translate(matcher.group("words")));
+  }
+
+  private Long translate(String words) {
+    return translations.compute(words.split(" "));
   }
 
   private Long asNumber(String text) {

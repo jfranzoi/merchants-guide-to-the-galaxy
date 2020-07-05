@@ -18,16 +18,16 @@ public class PricesTest {
 
   @Test
   public void exact() {
-    Prices prices = new Prices(translations).add(10L, "Silver", "one");
+    Prices prices = new Prices().add(10L, "Silver", 1L);
 
-    assertThat(prices.compute("Silver", "one"), is(10L));
+    assertThat(prices.compute("Silver", 1L), is(10L));
   }
 
   @Test
   public void multiple() throws Exception {
-    Prices prices = new Prices(translations).add(10L, "Silver", "one");
+    Prices prices = new Prices().add(10L, "Silver", 1L);
 
-    assertThat(prices.compute("Silver", "one", "one"), is(110L));
+    assertThat(prices.compute("Silver", 11L), is(110L));
   }
 
 }

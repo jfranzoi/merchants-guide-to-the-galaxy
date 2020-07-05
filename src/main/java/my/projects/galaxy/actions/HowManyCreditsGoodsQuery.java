@@ -6,13 +6,16 @@ import java.util.regex.Pattern;
 import my.projects.galaxy.Action;
 import my.projects.galaxy.Prices;
 import my.projects.galaxy.Result;
+import my.projects.galaxy.Translations;
 
 public class HowManyCreditsGoodsQuery implements Action {
 
-  private Result result;
+  private Translations translations;
   private Prices prices;
+  private Result result;
 
-  public HowManyCreditsGoodsQuery(Prices prices, Result result) {
+  public HowManyCreditsGoodsQuery(Translations translations, Prices prices, Result result) {
+    this.translations = translations;
     this.prices = prices;
     this.result = result;
   }
@@ -28,7 +31,15 @@ public class HowManyCreditsGoodsQuery implements Action {
         "%s %s is %s Credits",
         matcher.group("words"),
         matcher.group("good"),
-        prices.compute(matcher.group("good"), matcher.group("words").split(" "))));
+        priceFor(matcher.group("good"), translate(matcher.group("words")))));
+  }
+
+  private Long translate(String words) {
+    return translations.compute(words.split(" "));
+  }
+
+  private Long priceFor(String good, Long words) {
+    return prices.compute(good, words);
   }
 
 }
