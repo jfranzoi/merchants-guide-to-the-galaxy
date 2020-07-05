@@ -4,6 +4,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class FileContent implements Content {
 
@@ -13,8 +14,9 @@ public class FileContent implements Content {
     this.source = source;
   }
 
-  public List<String> lines() {
-    return linesAt(source);
+  @Override
+  public void onEachLine(Consumer<String> action) {
+    linesAt(source).forEach(action);
   }
 
   private List<String> linesAt(File file) {

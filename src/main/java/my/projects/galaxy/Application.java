@@ -25,7 +25,7 @@ public class Application {
   }
 
   public void process(Content content, Result result) {
-    content.lines().forEach(x -> {
+    content.onEachLine(x -> {
       process(x, result);
     });
   }

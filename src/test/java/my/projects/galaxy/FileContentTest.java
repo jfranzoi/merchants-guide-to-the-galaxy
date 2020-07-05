@@ -5,6 +5,8 @@ import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.empty;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -27,7 +29,10 @@ public class FileContentTest {
 
   @Test
   public void testNoLines() throws Exception {
-    assertThat(new FileContent(source).lines(), empty());
+    List<String> lines = new ArrayList<>();
+    new FileContent(source).onEachLine(x -> lines.add(x));
+
+    assertThat(lines, empty());
   }
 
   @Test
@@ -37,7 +42,10 @@ public class FileContentTest {
         .append("how much is pish tegj glob glob ?")
         .save();
 
-    assertThat(new FileContent(source).lines(), contains("glob means I", "how much is pish tegj glob glob ?"));
+    List<String> lines = new ArrayList<>();
+    new FileContent(source).onEachLine(x -> lines.add(x));
+
+    assertThat(lines, contains("glob means I", "how much is pish tegj glob glob ?"));
   }
 
 }

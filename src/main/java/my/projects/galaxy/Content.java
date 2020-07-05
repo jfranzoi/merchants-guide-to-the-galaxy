@@ -1,9 +1,9 @@
 package my.projects.galaxy;
 
-import java.util.List;
+import java.util.function.Consumer;
 
 public interface Content {
 
-  List<String> lines();
+  void onEachLine(Consumer<String> action);
 
 }

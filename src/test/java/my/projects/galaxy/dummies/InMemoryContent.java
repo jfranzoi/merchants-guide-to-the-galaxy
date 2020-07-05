@@ -2,6 +2,7 @@ package my.projects.galaxy.dummies;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 import my.projects.galaxy.Content;
 
@@ -15,8 +16,8 @@ public class InMemoryContent implements Content {
   }
 
   @Override
-  public List<String> lines() {
-    return lines;
+  public void onEachLine(Consumer<String> action) {
+    lines.forEach(action);
   }
 
 }
