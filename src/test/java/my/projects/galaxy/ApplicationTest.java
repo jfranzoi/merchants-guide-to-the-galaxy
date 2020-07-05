@@ -23,27 +23,27 @@ public class ApplicationTest {
   @Test
   public void understandNumbers() {
     content
-        .append("glob means 1")
-        .append("prok means 5")
-        .append("pish means 10")
-        .append("tegj means 50")
-        .append("how much is pish tegj glob glob ?");
+        .append("one means 1")
+        .append("five means 5")
+        .append("ten means 10")
+        .append("fifty means 50")
+        .append("how much is ten fifty one one ?");
 
     new Application(new ArabicTranslations()).process(content, result);
 
-    assertThat(result.output(), contains("pish tegj glob glob is 15011"));
+    assertThat(result.output(), contains("ten fifty one one is 105011"));
   }
 
   @Test
   public void understandsUnits() throws Exception {
     content
-        .append("glob means 1")
-        .append("glob units of Silver are worth 10 Credits")
-        .append("how many Credits is glob glob Silver ?");
+        .append("one means 1")
+        .append("one units of Silver are worth 10 Credits")
+        .append("how many Credits is one one Silver ?");
 
     new Application(new ArabicTranslations()).process(content, result);
 
-    assertThat(result.output(), contains("glob glob Silver is 110 Credits"));
+    assertThat(result.output(), contains("one one Silver is 110 Credits"));
   }
 
   @Test

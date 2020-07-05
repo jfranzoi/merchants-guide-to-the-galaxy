@@ -2,6 +2,7 @@ package my.projects.galaxy;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ArabicTranslations implements Translations {
@@ -16,15 +17,17 @@ public class ArabicTranslations implements Translations {
 
   @Override
   public Long compute(String... words) {
-    return Stream.of(words).map(x -> numberFor(x)).reduce(0L, (x, y) -> compute(x, y));
+    return toNumber(asDigits(words));
   }
 
-  private Long compute(Long left, Long right) {
-    return right + (left * 10);
+  private String asDigits(String... words) {
+    return Stream.of(words)
+        .map(x -> numberFor(x))
+        .collect(Collectors.joining());
   }
 
-  private Long numberFor(String word) {
-    return toNumber(symbolsByWord.get(word));
+  private String numberFor(String word) {
+    return symbolsByWord.get(word);
   }
 
   private Long toNumber(String symbol) {

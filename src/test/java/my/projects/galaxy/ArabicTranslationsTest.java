@@ -9,24 +9,27 @@ public class ArabicTranslationsTest {
 
   @Test
   public void single() {
-    Translations translations = new ArabicTranslations().meaning("glob", "1");
+    Translations translations = new ArabicTranslations().meaning("one", "1");
 
-    assertThat(translations.compute("glob"), is(1L));
+    assertThat(translations.compute("one"), is(1L));
   }
 
   @Test
   public void repeated() throws Exception {
-    Translations translations = new ArabicTranslations().meaning("glob", "1");
+    Translations translations = new ArabicTranslations().meaning("one", "1");
 
-    assertThat(translations.compute("glob", "glob"), is(11L));
+    assertThat(translations.compute("one", "one"), is(11L));
   }
 
   @Test
   public void different() throws Exception {
-    Translations translations = new ArabicTranslations().meaning("glob", "1").meaning("prok", "5");
+    Translations translations = new ArabicTranslations()
+        .meaning("one", "1")
+        .meaning("five", "5")
+        .meaning("ten", "10");
 
-    assertThat(translations.compute("glob", "prok"), is(15L));
-    assertThat(translations.compute("prok", "glob"), is(51L));
+    assertThat(translations.compute("one", "five"), is(15L));
+    assertThat(translations.compute("five", "ten"), is(510L));
   }
 
 }
