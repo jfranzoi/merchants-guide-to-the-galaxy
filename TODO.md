@@ -5,7 +5,7 @@
 * understand units
     * (DONE) instruct ("units of .. are worth")
     * (DONE) query valid data ("how many Credits is")
-* (WIP) understand numbers - roman (see http://en.wikipedia.org/wiki/Roman_numerals)
+* (DONE) understand numbers - roman (see http://en.wikipedia.org/wiki/Roman_numerals)
 * console application
-    * (TODO) from file, to console
-    * (TODO) main script
+    * (DONE) from file, to console
+    * (DONE) main script

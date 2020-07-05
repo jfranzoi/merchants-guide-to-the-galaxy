@@ -1,5 +1,6 @@
 package my.projects.galaxy;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -11,6 +12,12 @@ import my.projects.galaxy.actions.HowManyCreditsGoodsQuery;
 import my.projects.galaxy.actions.HowMuchWordsQuery;
 
 public class Application {
+
+  public static void main(String[] args) {
+    new Application().process(
+        new FileContent(new File(args[0])),
+        (x) -> System.out.println(x));
+  }
 
   private Translations translations;
   private Prices prices;
